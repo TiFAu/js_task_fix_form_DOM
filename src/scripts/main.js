@@ -12,6 +12,6 @@ function addingPlaceholderAndLabel(element, index, arr) {
   element.parentElement.prepend(elementLabel);
 }
 
-const allInput = [...document.querySelectorAll('.field-text')];
+const allInput = [...document.querySelectorAll('form .field-text')];
 
 allInput.forEach(addingPlaceholderAndLabel);
