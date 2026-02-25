@@ -3,15 +3,22 @@
 function addingPlaceholderAndLabel(element, index, arr) {
   const elementLabel = document.createElement('label');
 
-  element.placeholder =
-    element.name.charAt(0).toUpperCase() + element.name.slice(1);
+  if (element.name) {
+    element.placeholder =
+      element.name.charAt(0).toUpperCase() + element.name.slice(1);
+  }
 
   elementLabel.className = 'field-label';
+
+  if (!element.id && element.name) {
+    elementLabel.htmlFor = element.name;
+  }
+
   elementLabel.htmlFor = element.id;
   elementLabel.textContent = element.name.toUpperCase();
   element.parentElement.prepend(elementLabel);
 }
 
-const allInput = [...document.querySelectorAll('form .field-text')];
+const allInputs = [...document.querySelectorAll('form input')];
 
-allInput.forEach(addingPlaceholderAndLabel);
+allInputs.forEach(addingPlaceholderAndLabel);
